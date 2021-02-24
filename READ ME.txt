@@ -1,0 +1,27 @@
+This is the READ ME file for FalloutDemakeUS.
+____________________________________________________________________________
+
+Project done in Godot 3.2.3 so older versions may not work properly.
+
+This was an idea for making an 8-bit version of Fallout New Vegas, Only got as
+ 
+far as a few NPCs, with one having branching dialog. Only two of the houses
+ 
+can be entered and they're two different items you can collect(A key(which
+ 
+does nothing, I never got around to programming the locked door) And the 
+
+Doctors bag, Which is a key item and will change the dialog of the quest giver!
+
+Have fun tearing my code apart and seeing how it all works! I'm sure it's
+
+already very messy  :]
+
+ps. You may do whatever you like with this project. Just please credit me in
+
+your work as the source code provider!
+
+
+Credits to Jonathan Paul Torres AKA Raku Nana! 2020c
+
+copyrights to Bethesda and Obsidian 2010c
