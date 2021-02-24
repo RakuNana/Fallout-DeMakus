@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fallout DeMakeUs Sprites/Wander_Male/Wander_M_Side_R.png" type="Texture" id=1]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Player_battle_idle",
+"speed": 5.0
+} ]
+
+[node name="Player_battle" type="AnimatedSprite"]
+position = Vector2( 224, 352 )
+scale = Vector2( 8, 8 )
+frames = SubResource( 1 )
+animation = "Player_battle_idle"
+
+[node name="Player_battle_pos" type="Position2D" parent="."]
+scale = Vector2( 0.8, 0.9375 )

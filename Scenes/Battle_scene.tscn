@@ -1,0 +1,176 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Fallout DeMakeUs Sprites/Misc/Battle_screen1.png" type="Texture" id=1]
+[ext_resource path="res://Fallout DeMakeUs Sprites/Pip_boy/pipboy gui.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player_battle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Battle_scene1.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Enemy_battle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fallout DeMakeUs Sprites/fonts/PressStart2P-vaV7.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Fallout DeMakeUs Sprites/Pip_boy/Text_arrow_green.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 6 )
+
+[node name="Battle_scene1" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+
+[node name="Battle_scene_control" type="Control" parent="."]
+visible = false
+margin_right = 1024.0
+margin_bottom = 592.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle_BG" type="TextureRect" parent="Battle_scene_control"]
+margin_right = 1024.0
+margin_bottom = 592.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle_GUI" type="TextureRect" parent="Battle_scene_control"]
+margin_top = 432.0
+margin_right = 1024.0
+margin_bottom = 602.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player_battle" parent="Battle_scene_control" instance=ExtResource( 3 )]
+
+[node name="Enemy_battle" parent="Battle_scene_control" instance=ExtResource( 5 )]
+
+[node name="VATS" type="Button" parent="Battle_scene_control"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 96.0
+margin_top = 480.0
+margin_right = 256.0
+margin_bottom = 512.0
+focus_neighbour_left = NodePath("../Items")
+focus_neighbour_top = NodePath("../Skills")
+focus_neighbour_right = NodePath("../Items")
+focus_neighbour_bottom = NodePath("../Skills")
+text = "VATS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VATS" type="RichTextLabel" parent="Battle_scene_control/VATS"]
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 400, 144 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "V.A.T.S."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vats_pos" type="Position2D" parent="Battle_scene_control/VATS"]
+position = Vector2( -16, 8 )
+
+[node name="Skills" type="Button" parent="Battle_scene_control"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 96.0
+margin_top = 528.0
+margin_right = 256.0
+margin_bottom = 560.0
+focus_neighbour_left = NodePath("../Run")
+focus_neighbour_top = NodePath("../VATS")
+focus_neighbour_right = NodePath("../Run")
+focus_neighbour_bottom = NodePath("../VATS")
+text = "Skills"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skills_label" type="RichTextLabel" parent="Battle_scene_control/Skills"]
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Skills"
+
+[node name="Skills_pos" type="Position2D" parent="Battle_scene_control/Skills"]
+position = Vector2( -16, 8 )
+
+[node name="Items" type="Button" parent="Battle_scene_control"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 304.0
+margin_top = 480.0
+margin_right = 464.0
+margin_bottom = 512.0
+focus_neighbour_left = NodePath("../VATS")
+focus_neighbour_top = NodePath("../Run")
+focus_neighbour_right = NodePath("../VATS")
+focus_neighbour_bottom = NodePath("../Run")
+text = "Items"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items_label" type="RichTextLabel" parent="Battle_scene_control/Items"]
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 3 )
+text = "Items"
+
+[node name="Items_pos" type="Position2D" parent="Battle_scene_control/Items"]
+position = Vector2( -16, 8 )
+
+[node name="Run" type="Button" parent="Battle_scene_control"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 304.0
+margin_top = 528.0
+margin_right = 464.0
+margin_bottom = 560.0
+focus_neighbour_left = NodePath("../Skills")
+focus_neighbour_top = NodePath("../Items")
+focus_neighbour_right = NodePath("../Skills")
+focus_neighbour_bottom = NodePath("../Items")
+text = "Run"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Run_label" type="RichTextLabel" parent="Battle_scene_control/Run"]
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 4 )
+text = "Run"
+
+[node name="Run_pos" type="Position2D" parent="Battle_scene_control/Run"]
+position = Vector2( -16, 8 )
+
+[node name="Battle_Arrow" type="Sprite" parent="Battle_scene_control"]
+position = Vector2( 80, 488 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+[connection signal="focus_entered" from="Battle_scene_control/VATS" to="Battle_scene_control" method="_on_VATS_focus_entered"]
+[connection signal="focus_entered" from="Battle_scene_control/Skills" to="Battle_scene_control" method="_on_Skills_focus_entered"]
+[connection signal="focus_entered" from="Battle_scene_control/Items" to="Battle_scene_control" method="_on_Items_focus_entered"]
+[connection signal="focus_entered" from="Battle_scene_control/Run" to="Battle_scene_control" method="_on_Run_focus_entered"]
+[connection signal="pressed" from="Battle_scene_control/Run" to="Battle_scene_control" method="_on_Run_pressed"]

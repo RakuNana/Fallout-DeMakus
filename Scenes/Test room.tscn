@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Wander.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Quest_NPC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Quest_item.tscn" type="PackedScene" id=3]
+
+[node name="Test room" type="Node2D"]
+
+[node name="Quest_NPC" parent="." instance=ExtResource( 2 )]
+
+[node name="Quest_NPC2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 56, 56 )
+
+[node name="Dialog_box" parent="Quest_NPC2/CanvasLayer2" index="0"]
+reponses = {
+"accepted": " Great! Tell me when you have it",
+"completed": "Thanks for finding my missing item!!",
+"refused": "Well that's a damn shame.",
+"unresolved": "Can you find my item"
+}
+
+[node name="Quest_NPC3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 120, 0 )
+
+[node name="Area2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, -56 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 0 )
+
+[editable path="Quest_NPC2"]

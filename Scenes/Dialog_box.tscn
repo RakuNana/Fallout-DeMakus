@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Dialog_box.gd" type="Script" id=1]
+[ext_resource path="res://Fallout DeMakeUs Sprites/fonts/PressStart2P-vaV7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fallout DeMakeUs Sprites/Pip_boy/Text_arrow_green.png" type="Texture" id=3]
+
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 3 ), null ],
+"loop": true,
+"name": "arrow_blink",
+"speed": 5.0
+} ]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Dialog_box" type="Popup" parent="."]
+pause_mode = 2
+visible = true
+anchor_left = 0.5
+anchor_top = 0.987
+anchor_right = 0.5
+anchor_bottom = 0.987
+margin_left = -463.0
+margin_top = -71.2
+margin_right = 49.0
+margin_bottom = -7.20001
+script = ExtResource( 1 )
+dialog = [ "Hello!", "Welcome to Good Springs!" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialog_box"]
+modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text_arrow" type="AnimatedSprite" parent="Dialog_box"]
+position = Vector2( 498, 53 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+animation = "arrow_blink"
+frame = 1

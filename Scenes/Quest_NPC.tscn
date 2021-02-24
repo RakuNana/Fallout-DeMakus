@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Branching_dialog.gd" type="Script" id=1]
+[ext_resource path="res://Fallout DeMakeUs Sprites/fonts/PressStart2P-vaV7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fallout DeMakeUs Sprites/Pip_boy/Text_arrow_green.png" type="Texture" id=3]
+[ext_resource path="res://Fallout DeMakeUs Sprites/NPC/Doc Mitchell_idle_2.png" type="Texture" id=4]
+[ext_resource path="res://Fallout DeMakeUs Sprites/NPC/Doc Mitchell_idle_1.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Quest_NPC.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 9 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6, 8 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 3 ), null ],
+"loop": true,
+"name": "arrow_blink",
+"speed": 5.0
+} ]
+
+[node name="Quest_NPC" type="StaticBody2D"]
+script = ExtResource( 6 )
+
+[node name="NPC_skin" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="Interact_box" type="Area2D" parent="NPC_skin"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC_skin/Interact_box"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Dialog_box" type="Popup" parent="CanvasLayer2"]
+pause_mode = 2
+visible = true
+anchor_left = 0.5
+anchor_top = 0.987
+anchor_right = 0.5
+anchor_bottom = 0.987
+margin_left = -463.0
+margin_top = -71.2
+margin_right = 49.0
+margin_bottom = -7.20001
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spoken_Dialog" type="RichTextLabel" parent="CanvasLayer2/Dialog_box"]
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPC_Name" type="RichTextLabel" parent="CanvasLayer2/Dialog_box"]
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 575.0
+margin_top = -5.0
+margin_right = 255.0
+margin_bottom = -5.0
+custom_fonts/normal_font = SubResource( 4 )
+text = "Doc Mitchell"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Answer" type="RichTextLabel" parent="CanvasLayer2/Dialog_box"]
+pause_mode = 2
+self_modulate = Color( 0.0117647, 0.996078, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -49.0
+margin_top = -81.0
+margin_right = 463.0
+margin_bottom = 55.0
+custom_fonts/normal_font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Button" parent="CanvasLayer2/Dialog_box/Answer"]
+process_priority = 1
+margin_left = 176.0
+margin_top = 120.0
+margin_right = 210.0
+margin_bottom = 140.0
+text = "Yes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="Button" parent="CanvasLayer2/Dialog_box/Answer"]
+process_priority = 1
+margin_left = 216.0
+margin_top = 120.0
+margin_right = 246.0
+margin_bottom = 140.0
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text_arrow" type="AnimatedSprite" parent="CanvasLayer2/Dialog_box"]
+position = Vector2( 498, 53 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+animation = "arrow_blink"
+
+[node name="End_convo" type="Button" parent="CanvasLayer2/Dialog_box"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -1.0
+margin_top = 39.0
+margin_right = 11.0
+margin_bottom = 59.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="NPC_skin/Interact_box" to="CanvasLayer2/Dialog_box" method="_on_Interact_box_area_entered"]
+[connection signal="area_exited" from="NPC_skin/Interact_box" to="CanvasLayer2/Dialog_box" method="_on_Interact_box_area_exited"]
+[connection signal="pressed" from="CanvasLayer2/Dialog_box/Answer/Yes" to="CanvasLayer2/Dialog_box" method="_on_Yes_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Dialog_box/Answer/No" to="CanvasLayer2/Dialog_box" method="_on_No_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Dialog_box/End_convo" to="CanvasLayer2/Dialog_box" method="_on_End_convo_pressed"]
